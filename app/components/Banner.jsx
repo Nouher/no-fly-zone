@@ -1,5 +1,6 @@
 import React from 'react'
 import { AlarmIcon } from '../icons'
+import CountDownTimer from './CountDownTimer/CountDownTimer'
 
 const Banner = () => {
     return (
@@ -8,8 +9,8 @@ const Banner = () => {
                 <AlarmIcon width={40} height={40} />
                 <p className='text-sm font-medium '>Time left to voice your concern</p>
             </div>
-            <div className='flex w-1/2 items-center justify-center text-lg font-semibold'>
-                79d 12h 49m 59s
+            <div className='flex w-1/2 items-center justify-center '>
+                <CountDownTimer countdownTimestampMs={1706655600000} />
             </div>
         </div>
     )

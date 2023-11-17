@@ -54,8 +54,8 @@ export default function Home() {
           <EditIcon />
           <span className='text-[#535E32]'>Your submission</span>
         </h1>
-        <p className='text-[#747570] py-12 text-sm text-justify'>
-          Note: This site uses ChatGPT AI to generate a submission. This could be sent as is, or ideally used as a starting point for your personal submission to Government.
+        <p className='text-[#747570] py-12 text-md text-center italic'>
+          We utilise ChatGPT to generate your submission. Use as is, or as a starting point
         </p>
         <Button radius="full" size='lg' className='bg-[#8EA34E] text-white font-semibold w-72 h-14'
           startContent={
@@ -74,27 +74,35 @@ export default function Home() {
               />
             </svg>
           }>
-          Generate submission
+          Generate
         </Button>
         <h2 className='mt-12 pb-5 w-full font-semibold text-lg text-start '>1. Generated submission</h2>
         <Textarea
           labelPlacement="outside"
           placeholder="The text will appear here ..."
           defaultValue=""
-          minRows={10}
+          fullWidth={true}
+          isRequired
+          disableAnimation
+          disableAutosize
+          classNames={{
+            base: "",
+            input: "resize-y min-h-[250px]",
+          }}
         />
+
         <div className='flex w-full justify-between mt-5'>
-          <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-16 w-40'>copy email</Button>
+          <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-16 w-40'>Copy text</Button>
           <Button radius="full" color='primary' size='lg' className='text-white font-semibold h-16 w-40' startContent={
             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" clipRule="evenodd" d="M10.2501 2.03253L7.24545 3.06747C3.35787 4.40656 1.41408 5.0761 0.96984 6.23326C0.794876 6.68901 0.75408 7.17908 0.852343 7.64475C1.10184 8.8271 2.93285 9.6378 6.59488 11.2593C6.63666 11.2778 6.67647 11.2954 6.71435 11.3123L9.81396 9.0847C10.1857 8.81755 10.3715 8.68399 10.4298 8.7417C10.488 8.79941 10.3532 8.98354 10.0836 9.3518L7.90783 12.3236C7.96469 12.4394 8.02784 12.5794 8.10772 12.7564C9.6614 16.2009 10.4383 17.9231 11.5289 18.2155C12.1041 18.3697 12.7257 18.3116 13.2807 18.052C14.3329 17.5596 14.935 15.7087 16.1392 12.0069L17.1987 8.75006C18.6631 4.24822 19.3953 1.99729 18.2075 0.849C17.0197 -0.299294 14.7632 0.47798 10.2501 2.03253Z" fill="white" />
             </svg>
           }>
-            send email
+            Send
           </Button>
         </div>
         <div className="mt-12">
-          <h1 className='w-full font-semibold text-lg text-start '>2. Adjust submission concerns</h1>
+          <h2 className='w-full font-semibold text-md text-start '>2. Adjust submission concerns <span className="text-[#AFAFAF]">(optional)</span></h2>
           <p className='mt-7 text-sm '>What do you care about? Why are you completing this submission? These factors will be used to change the generated response. </p>
           <div className="mt-7 flex flex-col gap-y-3">
             <h3 className='text-sm '>
@@ -117,7 +125,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <h3 className='w-full mt-12 font-semibold text-lg text-start '>3. Add your details</h3>
+          <h3 className='w-full mt-12 font-semibold text-lg text-start '>3. Add your details <span className="text-[#AFAFAF]">(optional)</span></h3>
           <p className=' text-sm mt-7'>This site does not store any of your data. It uses the information below to populate an email you send from your email account. </p>
           <div className='mt-7 flex flex-col gap-1'>
             <h3 className='text-sm'>Remain anonymous</h3>
@@ -133,14 +141,14 @@ export default function Home() {
             <Input type='text' label='Organisation' placeholder='Input Organisation' labelPlacement="outside" />
           </div>
           <div className='mt-12 flex w-full justify-between '>
-            <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-16 w-40'>copy email</Button>
+            <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-16 w-40'>Copy text</Button>
             <Button radius="full" color='primary' size='lg' className='text-white font-semibold h-16 w-40' startContent={
               <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M10.2501 2.03253L7.24545 3.06747C3.35787 4.40656 1.41408 5.0761 0.96984 6.23326C0.794876 6.68901 0.75408 7.17908 0.852343 7.64475C1.10184 8.8271 2.93285 9.6378 6.59488 11.2593C6.63666 11.2778 6.67647 11.2954 6.71435 11.3123L9.81396 9.0847C10.1857 8.81755 10.3715 8.68399 10.4298 8.7417C10.488 8.79941 10.3532 8.98354 10.0836 9.3518L7.90783 12.3236C7.96469 12.4394 8.02784 12.5794 8.10772 12.7564C9.6614 16.2009 10.4383 17.9231 11.5289 18.2155C12.1041 18.3697 12.7257 18.3116 13.2807 18.052C14.3329 17.5596 14.935 15.7087 16.1392 12.0069L17.1987 8.75006C18.6631 4.24822 19.3953 1.99729 18.2075 0.849C17.0197 -0.299294 14.7632 0.47798 10.2501 2.03253Z" fill="white" />
               </svg>
 
             }>
-              send email
+              Send
             </Button>
           </div>
         </div>
@@ -196,29 +204,29 @@ export default function Home() {
           <div className='flex text-black gap-6 items-center'>
             <Icon5 width={20} className='w-1/5' />
             <div className='w-4/5'>
-              <h3 className='text-lg font-medium py-2'>Use this site to email</h3>
-              <p className='text-[#747570]'>You can use this website to draft an email from your own account. </p>
+              <h3 className='text-lg font-medium py-2'>Generate a submission</h3>
+              <p className='text-[#747570]'><a href="#generateButton" className="underline">use this website</a>  to draft an email to voice your concerns and stop WSI.</p>
             </div>
           </div>
           <div className='flex text-black gap-6 items-center'>
             <Icon5 width={20} className='w-1/5' />
             <div className='w-4/5'>
-              <h3 className='text-lg font-medium py-2'>Submit on the WSI Website</h3>
-              <p className='text-[#747570]'>Head to the WSI website, and leave your comments in the online form. </p>
+              <h3 className='text-lg font-medium py-2'>Submit Online</h3>
+              <p className='text-[#747570]'><a href="https://www.wsiflightpaths.gov.au/make-a-submission/" target="_blank" className="underline">Head to the WSI website</a>, and leave your comments in the online form.</p>
             </div>
           </div>
           <div className='flex text-black gap-6 items-center'>
             <Icon5 width={20} className='w-1/5' />
             <div className='w-4/5'>
-              <h3 className='text-lg font-medium py-2'>Talk to your local councillors</h3>
-              <p className='text-[#747570]'>Local Councillors (often residents of the area) appear to be on our side with this issue. Reach out to them to make sure. </p>
+              <h3 className='text-lg font-medium py-2'>Talk to your Councillors</h3>
+              <p className='text-[#747570]'>Local Councillors (often residents of the area) should be on our side. Reach out. </p>
             </div>
           </div>
           <div className='flex text-black gap-6 items-center'>
             <Icon5 width={20} className='w-1/5' />
             <div className='w-4/5'>
               <h3 className='text-lg font-medium py-2'>Make noise</h3>
-              <p className='text-[#747570]'>Get on social media, share this tool with your neighbours and local community – and voice your concern.</p>
+              <p className='text-[#747570]'>Tell people about this tool. Use it to create change. <a href="#" className="underline">Share with your neighbours and local community.</a></p>
             </div>
           </div>
         </div>
@@ -266,10 +274,6 @@ export default function Home() {
           <a href="#"><LinkedInSocialIcon /></a>
         </div>
       </section>
-
-
-
-
     </div >
   )
 }

@@ -422,9 +422,9 @@ export function InstagramSocialIcon({ width, height }) {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(17.7337 42.6449) scale(42.6449)"
         >
-          <stop offset="0.1" stop-color="#FFDD55" />
-          <stop offset="0.5" stop-color="#FF543E" />
-          <stop offset="1" stop-color="#C837AB" />
+          <stop offset="0.1" stopColor="#FFDD55" />
+          <stop offset="0.5" stopColor="#FF543E" />
+          <stop offset="1" stopColor="#C837AB" />
         </radialGradient>
         <linearGradient
           id="paint1_linear_656_2527"
@@ -434,8 +434,8 @@ export function InstagramSocialIcon({ width, height }) {
           y2="42.6449"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.1" stop-color="#3771C8" />
-          <stop offset="0.5" stop-color="#6600FF" stop-opacity="0" />
+          <stop offset="0.1" stopColor="#3771C8" />
+          <stop offset="0.5" stopColor="#6600FF" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
