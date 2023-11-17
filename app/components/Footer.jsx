@@ -6,7 +6,7 @@ const Footer = () => {
             <div>
                 <a className='text-xs cursor-pointer' href="mailto:wsiwarriors@gmail.com">Contact Us</a>
             </div>
-            <div className='text-xs'>No Fly Zone • All Rights Reserved {new Date().getFullYear()}</div>
+            <span className='text-xs'>No Fly Zone • All Rights Reserved {new Date().getFullYear()}</span>
         </div>
     )
 }

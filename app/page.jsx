@@ -1,20 +1,28 @@
+'use client'
 import { Button, Checkbox, Divider, Input, Radio, RadioGroup, Textarea } from "@nextui-org/react";
 import { BookmarkIcon, BulbIcon, EditIcon, ExternalLinkIcon, FacebookSocialIcon, Icon1, Icon2, Icon3, Icon4, Icon5, InstagramSocialIcon, LinkIcon, LinkSocialIcon, LinkedInSocialIcon, Logo, MailSocialIcon, WhatsappSocialIcon, XSocialIcon } from './icons';
+import { useRef } from "react";
 
 
 export default function Home() {
+
+  const linkRef = useRef(null)
+  const scrollToGenerateButton = () => {
+    linkRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <div>
 
-      <section div className="flex flex-col items-center pt-10 bg-[url('/bg-plain.jpg')] bg-cover bg-center" >
+      <section className="flex flex-col items-center pt-10 bg-[url('/bg-plain.jpg')] bg-cover bg-center" >
         <Logo width={200} />
         <p className='text-2xl font-medium italic  text-center px-4 mt-40 text-white'><span className='underline '>Take action</span> against the Western Sydney International Airport flight paths and <span className='underline'>protect your suburb</span></p>
-        <div className='bg-[#724324] text-white text-center text-sm p-8 mt-36'>
+        <p className='bg-[#724324] text-white text-center text-sm p-8 mt-36'>
           Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.
           <br />
           <br />
           Flight Path changes will disproportionately affect Bardwell Park, Bardwell Valley, Bexley North, Earlwood, Kingsgrove and surrounds.
-        </div>
+        </p>
       </section >
 
       <section className="py-16 px-5">
@@ -49,7 +57,7 @@ export default function Home() {
 
       <Divider className="my-2" />
 
-      <section className='py-16 px-5 flex flex-col items-center'>
+      <section className='py-16 px-5 flex flex-col items-center' ref={linkRef}>
         <h1 className='flex gap-2 items-center font-bold text-2xl'>
           <EditIcon />
           <span className='text-[#535E32]'>Your submission</span>
@@ -57,7 +65,10 @@ export default function Home() {
         <p className='text-[#747570] py-12 text-md text-center italic'>
           We utilise ChatGPT to generate your submission. Use as is, or as a starting point
         </p>
-        <Button radius="full" size='lg' className='bg-[#8EA34E] text-white font-semibold w-72 h-14'
+        <Button
+          radius="full"
+          size='lg'
+          className='bg-[#8EA34E] text-white font-semibold w-72 h-14'
           startContent={
             <svg
               width="21"
@@ -205,7 +216,7 @@ export default function Home() {
             <Icon5 width={20} className='w-1/5' />
             <div className='w-4/5'>
               <h3 className='text-lg font-medium py-2'>Generate a submission</h3>
-              <p className='text-[#747570]'><a href="#generateButton" className="underline">use this website</a>  to draft an email to voice your concerns and stop WSI.</p>
+              <p className='text-[#747570] cursor-pointer'><a onClick={scrollToGenerateButton} className="underline">use this website</a>  to draft an email to voice your concerns and stop WSI.</p>
             </div>
           </div>
           <div className='flex text-black gap-6 items-center'>
