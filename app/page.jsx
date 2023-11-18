@@ -18,7 +18,7 @@ export default function Home() {
       <section className="flex flex-col items-center pt-10 bg-[url('/bg-plain.jpg')] bg-cover bg-center " >
         <Logo width={200} />
         <p className='text-2xl font-medium italic  text-center px-4 mt-40 text-white'><span className='underline '>Take action</span> against the Western Sydney International Airport flight paths and <span className='underline'>protect your suburb</span></p>
-        <p className='bg-[#724324] text-white text-center text-sm p-8 mt-36'>
+        <p className='bg-[#724324] text-white text-center p-8 mt-36'>
           Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.
           <br />
           <br />

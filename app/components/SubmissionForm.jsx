@@ -30,7 +30,8 @@ const SubmissionForm = (props) => {
         }).then(res => res.json())
             .then(data => {
                 setPending(false)
-                handleInput('content', data.body)
+                console.log(data)
+                handleInput('content', data.message.content)
             })
         // axios.post('api/generate', {
         //     ...submissionForm,
@@ -90,12 +91,12 @@ const SubmissionForm = (props) => {
                 disableAutosize
                 classNames={{
                     base: "",
-                    input: "resize-y min-h-[250px]",
+                    input: "resize-y min-h-[250px] text-md",
                 }}
             />
 
-            <div className='flex w-full justify-end mt-5'>
-                <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-16 w-40'>Copy text</Button>
+            <div className='flex w-full justify-center mt-5'>
+                <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-16 w-1/2'>Copy text</Button>
                 {/* <Button radius="full" color='primary' size='lg' className='text-white font-semibold h-16 w-40' startContent={
                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" clipRule="evenodd" d="M10.2501 2.03253L7.24545 3.06747C3.35787 4.40656 1.41408 5.0761 0.96984 6.23326C0.794876 6.68901 0.75408 7.17908 0.852343 7.64475C1.10184 8.8271 2.93285 9.6378 6.59488 11.2593C6.63666 11.2778 6.67647 11.2954 6.71435 11.3123L9.81396 9.0847C10.1857 8.81755 10.3715 8.68399 10.4298 8.7417C10.488 8.79941 10.3532 8.98354 10.0836 9.3518L7.90783 12.3236C7.96469 12.4394 8.02784 12.5794 8.10772 12.7564C9.6614 16.2009 10.4383 17.9231 11.5289 18.2155C12.1041 18.3697 12.7257 18.3116 13.2807 18.052C14.3329 17.5596 14.935 15.7087 16.1392 12.0069L17.1987 8.75006C18.6631 4.24822 19.3953 1.99729 18.2075 0.849C17.0197 -0.299294 14.7632 0.47798 10.2501 2.03253Z" fill="white" />

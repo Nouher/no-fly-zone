@@ -2,27 +2,33 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.API_KEY,
 });
 
 export async function POST(request) {
   const body = await request.json();
+  let convo = [
+    {
+      role: "system",
+      content:
+        "You are a virtual assistant for content creation. you need to create a submission article body.",
+    },
+    {
+      role: "user",
+      content: `Create a submission article for me based on these parameters:
+        - Topic: craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.
+        - Flight Path changes will disproportionately affect Bardwell Park, Bardwell Valley, Bexley North, Earlwood, Kingsgrove and surrounds.
+        `,
+    },
+  ];
 
-  // const configuration = new Configuration({
-  //   apiKey: process.env.OPENAI_API_KEY,
-  // });
+  const completion = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo",
+    messages: convo,
+  });
+  console.log(completion.choices[0].message);
 
-  // const completion = await openai.completions.create({
-  //   model: "gpt-3.5-turbo-instruct",
-  //   prompt: "Say this is a test.",
-  //   max_tokens: 7,
-  //   temperature: 0,
-  // });
-
-  // console.log(completion);
-
-  console.log(body);
   return NextResponse.json({
-    body: "from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt from chat gpt testt ",
+    message: completion.choices[0].message,
   });
 }
