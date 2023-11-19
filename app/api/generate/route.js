@@ -12,7 +12,6 @@ export async function POST(request) {
       role: "system",
       content:
         "You are a virtual assistant for content creation. you need to create a submission article body.",
-      // "You are a virtual assistant for content creation. you need to create a submission article body.",
     },
     // {
     // role: "user",
@@ -27,7 +26,7 @@ export async function POST(request) {
   ];
 
   const completion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
+    model: "gpt-3.5-turbo-1106",
     messages: convo,
   });
 
