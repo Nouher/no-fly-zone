@@ -10,8 +10,8 @@ export async function POST(request) {
   let convo = [
     {
       role: "system",
-      content:
-        "You are a virtual assistant for content creation. you need to create a submission article body.",
+      content: "Say Hi",
+      // "You are a virtual assistant for content creation. you need to create a submission article body.",
     },
     // {
     //   role: "user",
