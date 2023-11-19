@@ -13,16 +13,13 @@ export async function POST(request) {
       content:
         "You are a virtual assistant for content creation. you need to create a submission article body.",
     },
-    // {
-    // role: "user",
-    // content: `Create a submission article for me based on these parameters:
-    //   - Topic: craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.
-    //   - Flight Path changes will disproportionately affect Bardwell Park, Bardwell Valley, Bexley North, Earlwood, Kingsgrove and surrounds.
-    //   `,
-    // content: `Create a submission article for me based on these parameters:
-    //   - Topic: the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.
-    //   `,
-    // },
+    {
+      role: "user",
+      content: `Create a submission article for me based on these parameters:
+      - Topic: craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.
+      - Flight Path changes will disproportionately affect Bardwell Park, Bardwell Valley, Bexley North, Earlwood, Kingsgrove and surrounds.
+      `,
+    },
   ];
 
   const completion = await openai.chat.completions.create({
