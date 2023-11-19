@@ -46,7 +46,7 @@ const SubmissionForm = (props) => {
     }
 
     return (
-        <form className='flex flex-col items-center w-full lg:w-1/2'>
+        <form className='flex flex-col items-center w-full '>
             <Button
                 onClick={(e) => generate(e)}
                 type='submit'
