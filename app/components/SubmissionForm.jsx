@@ -8,14 +8,26 @@ import { EditIcon } from '../icons';
 const SubmissionForm = (props) => {
 
     const linkRef = useRef(null)
+
     const scrollToTopSection = () => {
         linkRef.current?.scrollIntoView({ behavior: "smooth" })
     }
-
+    const [prompt, setPrompt] = useState('');
+    const [suburb, setSuburb] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [organisation, SetOrganisation] = useState('');
     const [submissionForm, setSubmissionForm] = useState({
+        suburb: '',
+        factors: [],
+        anonymous: false,
+        name: '',
+        email: '',
+        phone: '',
+        organisation: '',
         content: ''
     })
-    const [prompt, setPrompt] = useState('');
     const [pending, setPending] = useState(false);
 
     function handleInput(key, value) {
@@ -33,7 +45,12 @@ const SubmissionForm = (props) => {
             method: 'POST',
             body: JSON.stringify({
                 ...submissionForm,
-                prompt
+                suburb,
+                name,
+                email,
+                phone,
+                organisation,
+                prompt,
             })
         }).then(res => res.json())
             .then(data => {
@@ -41,6 +58,7 @@ const SubmissionForm = (props) => {
                 console.log(data)
                 handleInput('content', data.message.content)
             })
+        console.log(submissionForm, name, email, phone, organisation)
         // axios.post('api/generate', {
         //     ...submissionForm,
         //     prompt
@@ -126,12 +144,15 @@ const SubmissionForm = (props) => {
                 <h2 className='w-full font-semibold text-md text-start '>2. Adjust submission concerns <span className="text-[#AFAFAF]">(optional)</span></h2>
                 <p className='mt-7 text-sm '>What do you care about? Why are you completing this submission? These factors will be used to change the generated response. </p>
                 <div className="mt-7 flex flex-col gap-y-3">
-                    <h3 className='text-sm '>
+                    <label className='text-sm ' htmlFor='suburb_or_postcode'>
                         Your suburb or postcode
-                    </h3>
+                    </label>
                     <Input
                         placeholder="Input suburb or postcode"
                         labelPlacement="outside"
+                        name='suburb'
+                        value={suburb}
+                        onInput={(e) => setSuburb(e.target.value)}
                     />
                 </div>
                 <div className='flex flex-col gap-3 items-start w-full mt-7'>
@@ -156,11 +177,23 @@ const SubmissionForm = (props) => {
                     </RadioGroup>
                 </div>
                 <div className='mt-6 flex flex-col gap-4'>
-                    <Input type='text' label='Name' placeholder='Input Name' labelPlacement="outside" />
-                    <Input type='email' label='Email' placeholder='Input Email' labelPlacement="outside" />
-                    <Input type='phone' label='Phone' placeholder='Input Phone' labelPlacement="outside" />
-                    <Input type='text' label='Organisation' placeholder='Input Organisation' labelPlacement="outside" />
+                    <Input type='text' label='Name' placeholder='Input Name' labelPlacement="outside" name='name'
+                        value={name}
+                        onInput={(e) => setName(e.target.value)} />
+
+                    <Input type='email' label='Email' placeholder='Input Email' labelPlacement="outside" name='email'
+                        value={email}
+                        onInput={(e) => setEmail(e.target.value)} />
+
+                    <Input type='phone' label='Phone' placeholder='Input Phone' labelPlacement="outside" name='phone'
+                        value={phone}
+                        onInput={(e) => setPhone(e.target.value)} />
+
+                    <Input type='text' label='Organisation' placeholder='Input Organisation' labelPlacement="outside" name='organisation'
+                        value={organisation}
+                        onInput={(e) => SetOrganisation(e.target.value)} />
                 </div>
+
                 <div className='flex justify-center'>
                     <Button
                         onClick={(e) => generate(e)}
