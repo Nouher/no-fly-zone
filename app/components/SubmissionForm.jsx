@@ -55,10 +55,9 @@ const SubmissionForm = (props) => {
         }).then(res => res.json())
             .then(data => {
                 setPending(false)
-                console.log(data)
+                // console.log(data)
                 handleInput('content', data.message.content)
             })
-        console.log(submissionForm, name, email, phone, organisation)
         // axios.post('api/generate', {
         //     ...submissionForm,
         //     prompt
