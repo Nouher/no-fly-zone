@@ -41,33 +41,16 @@ const SubmissionForm = (props) => {
         e.preventDefault();
         setPending(true)
         scrollToTopSection();
-        fetch('/api/generate', {
+        fetch('https://no-fly-zone-2fa9240d3427.herokuapp.com/user', {
             method: 'POST',
-            body: JSON.stringify({
-                ...submissionForm,
-                suburb,
-                name,
-                email,
-                phone,
-                organisation,
-                prompt,
-            })
+
         }).then(res => res.json())
             .then(data => {
                 setPending(false)
-                // console.log(data)
+                console.log(data)
                 handleInput('content', data.message.content)
             })
-        // axios.post('api/generate', {
-        //     ...submissionForm,
-        //     prompt
-        // })
-        //     .then(function (response) {
-        //         console.log(response.json());
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
+
     }
 
     return (
