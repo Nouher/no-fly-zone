@@ -72,6 +72,7 @@ const SubmissionForm = (props) => {
             <Input type='text' placeholder='text here ...' value={prompt} onInput={(e) => setPrompt(e.target.value)} /> */}
             <h2 className='mt-12 pb-5 w-full font-semibold text-lg text-start ' ref={linkRef}>1. Generated submission</h2>
             <Textarea
+                variant='faded'
                 id='submissionForm'
                 ref={textareaRef}
                 value={submissionForm.content}
@@ -84,9 +85,11 @@ const SubmissionForm = (props) => {
                 disableAnimation
                 disableAutosize
                 classNames={{
-                    base: "",
-                    input: "resize-y min-h-[250px] text-md",
+                    base: "outline-none ",
+                    input: "resize-y min-h-[250px] text-md outline-none",
                 }}
+
+
             />
             <Button
                 onClick={(e) => generate(e)}
