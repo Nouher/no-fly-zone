@@ -1,6 +1,5 @@
 'use client'
 import { Button, Checkbox, Radio, RadioGroup, CircularProgress, Input, Textarea } from '@nextui-org/react'
-
 import axios from 'axios';
 import React, { useRef, useState } from 'react'
 import { EditIcon } from '../icons';
@@ -13,7 +12,6 @@ const SubmissionForm = (props) => {
     const scrollToTopSection = () => {
         linkRef.current?.scrollIntoView({ behavior: "smooth" })
     }
-    const [prompt, setPrompt] = useState('');
     const [suburb, setSuburb] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -27,8 +25,39 @@ const SubmissionForm = (props) => {
         email: '',
         phone: '',
         organisation: '',
-        content: ''
+        content: '',
+        prompt: []
     })
+    //fill Prompt 
+    const [prompt, setPrompt] = useState(['']);
+    const [isSelected1, setIsSelected1] = useState(true)
+    const [isSelected2, setIsSelected2] = useState(false)
+    const [isSelected3, setIsSelected3] = useState(true)
+    const [isSelected4, setIsSelected4] = useState(true)
+    const [isSelected5, setIsSelected5] = useState(false)
+    const [isSelected6, setIsSelected6] = useState(false)
+    const [isSelected7, setIsSelected7] = useState(false)
+    const [isSelected8, setIsSelected8] = useState(false)
+
+    const CheckBoxList = [
+        { id: 1, isSelected: isSelected1, prompt: "I am concerned about the noise from planes flying over my suburb. Reference studies from around the world of poor health due to closeness of airplane traffic", },
+        { id: 2, isSelected: isSelected2, prompt: "I am concerned my health will deteriorate, due to planes flying over head with their cancer inducing noxious gases, and my hearing will be affected", },
+        { id: 3, isSelected: isSelected3, prompt: "I am concerned my health will deteriorate, due to planes flying over head with their cancer inducing noxious gases, and my hearing will be affected", },
+        { id: 4, isSelected: isSelected4, prompt: "I am concerned about the native environment in my suburb, particularly native species that are only found in the area like the grey headed flying foxes in Turrella Reserve and Wolli Creek", },
+        { id: 5, isSelected: isSelected5, prompt: "We already get our fair share of airplane traffic throughout the day and evening. It’s unfair to tunnel all of the sydney airport traffic through my suburb. There should be an equitable sharing of the flight paths - as a tax payer, I am not happy.", },
+        { id: 6, isSelected: isSelected6, prompt: "I am concerned about the proposed changes because it will greatly affect my property value in the area. I purchased in this area as it had unique aspects I couldn’t find in Sydney, like the beautiful native bush and surround. Reference other studies from around the world of property values decreasing when new airports are built around them", },
+        { id: 7, isSelected: isSelected7, prompt: "We already get more than our fair share of noise from the M5 motorway day and night, with cars, and bikes making lots of noise. There’s also heavy trucking from the north and south, and from  from Port Botany at all hours of the day. It never stops. We’ve had enough", },
+        { id: 8, isSelected: isSelected8, prompt: "We have planes that fly overhead already, day and night, that are harming the fragile native wildlife and flora", },
+    ]
+
+    const fillPrompt = () => {
+        setPrompt([])
+        CheckBoxList.map((item) => {
+            item.isSelected && prompt.push(item.prompt)
+        })
+
+    }
+
     const [pending, setPending] = useState(false);
 
     function handleInput(key, value) {
@@ -42,33 +71,24 @@ const SubmissionForm = (props) => {
         e.preventDefault();
         setPending(true)
         scrollToTopSection();
-        fetch('https://no-fly-zone-2fa9240d3427.herokuapp.com/user', {
-            method: 'POST',
-            body: JSON.stringify({
-                ...submissionForm,
-                suburb,
-                name,
-                email,
-                phone,
-                organisation,
-                prompt,
-            })
-        }).then(res => res.json())
-            .then(data => {
+        fillPrompt();
+        console.log(prompt)
+        axios.post('https://no-fly-zone-9edfc9935f29.herokuapp.com/user', {
+            ...submissionForm,
+            suburb,
+            name,
+            email,
+            phone,
+            organisation,
+            prompt
+        })
+            .then(res => {
                 setPending(false)
-                console.log(data)
-                handleInput('content', data.message.content)
+                handleInput('content', res.data.message.content)
             })
-        // axios.post('api/generate', {
-        //     ...submissionForm,
-        //     prompt
-        // })
-        //     .then(function (response) {
-        //         console.log(response.json());
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     const copyToClipboard = () => {
         textareaRef.current.select();
@@ -161,14 +181,14 @@ const SubmissionForm = (props) => {
                     />
                 </div>
                 <div className='flex flex-col gap-3 items-start w-full mt-7'>
-                    <Checkbox defaultSelected radius="full" >Noise from planes</Checkbox>
-                    <Checkbox defaultSelected radius="full" >My health</Checkbox>
-                    <Checkbox radius="full" >The environment</Checkbox>
-                    <Checkbox defaultSelected radius="full" >Native wildlife</Checkbox>
-                    <Checkbox radius="full" >Sharing flight paths across Sydney</Checkbox>
-                    <Checkbox radius="full" >Property values decreasing</Checkbox>
-                    <Checkbox radius="full" >Already get enough noise from M5</Checkbox>
-                    <Checkbox radius="full" >Already get enough noise from planes</Checkbox>
+                    <Checkbox radius="full" isSelected={isSelected1} onValueChange={setIsSelected1}>Noise from planes</Checkbox>
+                    <Checkbox radius="full" isSelected={isSelected2} onValueChange={setIsSelected2}>My health</Checkbox>
+                    <Checkbox radius="full" isSelected={isSelected3} onValueChange={setIsSelected3}>The environment</Checkbox>
+                    <Checkbox radius="full" isSelected={isSelected4} onValueChange={setIsSelected4}>Native wildlife</Checkbox>
+                    <Checkbox radius="full" isSelected={isSelected5} onValueChange={setIsSelected5}>Sharing flight paths across Sydney</Checkbox>
+                    <Checkbox radius="full" isSelected={isSelected6} onValueChange={setIsSelected6}>Property values decreasing</Checkbox>
+                    <Checkbox radius="full" isSelected={isSelected7} onValueChange={setIsSelected7}>Already get enough noise from M5</Checkbox>
+                    <Checkbox radius="full" isSelected={isSelected8} onValueChange={setIsSelected8}>Already get enough noise from planes</Checkbox>
                 </div>
             </div>
             <div>
