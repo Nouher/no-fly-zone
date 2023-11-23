@@ -4,9 +4,9 @@ const Footer = () => {
     return (
         <div className='p-6 flex bg-[#724324] text-white justify-between items-center'>
             <div>
-                <a className='text-xs cursor-pointer' href="mailto:wsiwarriors@gmail.com">Contact Us</a>
+                <a className='text-xs lg:text-medium cursor-pointer' href="mailto:wsiwarriors@gmail.com">Contact Us</a>
             </div>
-            <span className='text-xs'>No Fly Zone • All Rights Reserved {new Date().getFullYear()}</span>
+            <span className='text-xs lg:text-medium'>No Fly Zone • All Rights Reserved {new Date().getFullYear()}</span>
         </div>
     )
 }

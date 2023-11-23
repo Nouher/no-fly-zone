@@ -17,10 +17,10 @@ export default function Home() {
   return (
     <div className="lg:flex lg:flex-col lg:items-center">
 
-      <section className="flex flex-col items-center pt-10 bg-[url('/bg-plain.jpg')] bg-cover bg-center " >
+      <section className="flex flex-col items-center pt-10 bg-[url('/bg-plain.jpg')] bg-cover bg-center lg:w-full" >
         <Logo width={200} />
-        <p className='text-2xl font-medium italic  text-center px-4 mt-40 text-white'><span className='underline '>Take action</span> against the Western Sydney International Airport flight paths and <span className='underline'>protect your suburb</span></p>
-        <p className='bg-[#724324] text-white text-center p-8 mt-36'>
+        <p className='text-2xl font-medium italic  text-center px-4 mt-40 text-white lg:text-4xl lg:max-w-7xl lg:mt-24'><span className='underline '>Take action</span> against the Western Sydney International Airport flight paths and <span className='underline'>protect your suburb</span></p>
+        <p className='bg-[#724324] text-white text-center p-8 mt-36 lg:w-full'>
           Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.
           <br />
           <br />
@@ -28,12 +28,12 @@ export default function Home() {
         </p>
       </section >
 
-      <section className="py-16 px-5 lg:w-1/2 ">
-        <h1 className='flex justify-center gap-4 font-bold text-2xl text-[#724324]'>
+      <section className="py-16 px-5 lg:w-3/4 ">
+        <h1 className='flex justify-center gap-4 font-bold text-2xl lg:text-4xl lg:py-4 text-[#724324]'>
           <BulbIcon width={30} />
           How does it work?
         </h1>
-        <div className='flex justify-center flex-col gap-5 mt-14'>
+        <div className='flex justify-center flex-col gap-5 mt-14  lg:w-full'>
           <div className='flex text-black gap-6 items-center'>
             <Icon1 width={20} className='w-1/5' />
             <div className='w-4/5'>
@@ -67,12 +67,12 @@ export default function Home() {
 
       <Divider className="my-2" />
 
-      <section className="py-16 px-5">
-        <h1 className='flex justify-center gap-4 font-bold text-2xl text-[#724324]'>
+      <section className="py-16 px-5 lg:w-3/4  ">
+        <h1 className='flex justify-center gap-4 font-bold text-2xl lg:text-4xl lg:py-4 text-[#724324]'>
           <BulbIcon width={30} />
           What is this site?
         </h1>
-        <div className='flex justify-center flex-col gap-5 mt-14'>
+        <div className='flex justify-center flex-col gap-5 mt-14 lg:grid lg:grid-cols-2 lg:gap-10'>
           <div className='flex text-black gap-6 items-center'>
             <Icon4 width={20} className='w-1/5' />
             <div className='w-4/5'>
@@ -106,12 +106,12 @@ export default function Home() {
 
       <Divider className="my-2" />
 
-      <section className="py-16 px-5">
-        <h1 className='flex justify-center gap-4 font-bold text-[22px] text-[#724324]'>
+      <section className="py-16 px-5 lg:w-3/4">
+        <h1 className='flex justify-center gap-4 font-bold text-[22px] lg:text-4xl lg:py-4 text-[#724324]'>
           <BulbIcon width={30} />
           How to voice your concern
         </h1>
-        <div className='flex justify-center flex-col gap-5 mt-12'>
+        <div className='flex justify-center flex-col gap-5 mt-12 lg:grid lg:grid-cols-2 lg:gap-10	'>
           <div className='flex text-black gap-6 items-center'>
             <Icon5 width={20} className='w-1/5' />
             <div className='w-4/5'>
@@ -148,19 +148,19 @@ export default function Home() {
       <section className="py-16 px-1 flex flex-col items-center">
         <h1 className='flex gap-2 items-center font-bold text-2xl'>
           <BookmarkIcon />
-          <span className='text-[#535E32]'>Related documents</span>
+          <span className='text-[#535E32] lg:text-4xl lg:py-4'>Related documents</span>
         </h1>
         <div className="mt-10 flex justify-center">
           <div className='flex flex-col gap-y-5 text-[#747570]'>
-            <a className='flex gap-2 text-sm ' target='_blank' href="https://www.wsiflightpaths.gov.au/make-a-submission/">
+            <a className='flex gap-2  text-sm lg:text-lg ' target='_blank' href="https://www.wsiflightpaths.gov.au/make-a-submission/">
               <LinkIcon />
               <span>Western Sydney International Airport Community</span>
             </a>
-            <a className='flex gap-2 text-sm ' target='_blank' href="https://wsiflightpaths.aerlabs.com/ ">
+            <a className='flex gap-2 text-sm lg:text-lg ' target='_blank' href="https://wsiflightpaths.aerlabs.com/ ">
               <LinkIcon />
               <span>Flight path tool to check your address</span>
             </a>
-            <a className='flex gap-2 text-sm ' target='_blank' href="https://www.wsiflightpaths.gov.au/make-a-submission/">
+            <a className='flex gap-2 text-sm lg:text-lg ' target='_blank' href="https://www.wsiflightpaths.gov.au/make-a-submission/">
               <LinkIcon />
               <span>Form to submit your concern</span>
             </a>
@@ -170,12 +170,12 @@ export default function Home() {
 
       <Divider className="my-2" />
 
-      <section className="py-16 px-5 flex flex-col items-center">
+      <section className="py-16 px-5 flex flex-col items-center lg:w-1/2 lg:px-44">
         <h1 className='flex gap-2 items-center font-bold text-2xl'>
           <ExternalLinkIcon />
-          <span className='text-[#535E32]'>Share this site</span>
+          <span className='text-[#535E32] lg:text-4xl'>Share this site</span>
         </h1>
-        <div className='mt-10 flex justify-between items-center w-full'>
+        <div className='mt-10 flex justify-between items-center w-full lg:w'>
           <EmailShareButton
             url='https://michaelb1019.sg-host.com/'
             quote={'Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.'}>
