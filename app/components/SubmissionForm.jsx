@@ -8,6 +8,7 @@ import { EditIcon } from '../icons';
 const SubmissionForm = (props) => {
 
     const linkRef = useRef(null)
+    const textareaRef = useRef(null)
 
     const scrollToTopSection = () => {
         linkRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -58,7 +59,6 @@ const SubmissionForm = (props) => {
                 console.log(data)
                 handleInput('content', data.message.content)
             })
-        console.log(submissionForm, name, email, phone, organisation)
         // axios.post('api/generate', {
         //     ...submissionForm,
         //     prompt
@@ -70,9 +70,13 @@ const SubmissionForm = (props) => {
         //         console.log(error);
         //     });
     }
+    const copyToClipboard = () => {
+        textareaRef.current.select();
+        document.execCommand('copy');
+    }
 
     return (
-        <form className='py-16 px-5 flex flex-col items-center' >
+        <form className='py-16 px-5 flex flex-col items-center' ref={linkRef}>
             <h1 className='flex gap-2 items-center font-bold text-2xl'>
                 <EditIcon />
                 <span className='text-[#535E32]'>Your submission</span>
@@ -80,24 +84,7 @@ const SubmissionForm = (props) => {
             <p className='text-[#747570] py-12 text-md text-center italic'>
                 We utilise ChatGPT to generate your submission. Use as is, or as a starting point
             </p>
-            {/* <Input type='text' placeholder='text here ...' value={submissionForm.content} onInput={(e) => handleInput('title', (e.target.value))} />
-            <Input type='text' placeholder='text here ...' value={prompt} onInput={(e) => setPrompt(e.target.value)} /> */}
-            <h2 className='mt-12 pb-5 w-full font-semibold text-lg text-start ' ref={linkRef}>1. Generated submission</h2>
-            <Textarea
-                value={submissionForm.content}
-                onInput={(e) => handleInput('title', (e.target.value))}
-                labelPlacement="outside"
-                placeholder="The text will appear here ..."
-                defaultValue=""
-                fullWidth={true}
-                // isRequired
-                disableAnimation
-                disableAutosize
-                classNames={{
-                    base: "",
-                    input: "resize-y min-h-[250px] text-md",
-                }}
-            />
+
             <Button
                 onClick={(e) => generate(e)}
                 type='submit'
@@ -127,9 +114,26 @@ const SubmissionForm = (props) => {
                 }>
                 Generate
             </Button>
+            <h2 className='mt-12 pb-5 w-full font-semibold text-lg text-start ' >1. Generated submission</h2>
+            <Textarea
+                ref={textareaRef}
+                value={submissionForm.content}
+                onInput={(e) => handleInput('title', (e.target.value))}
+                labelPlacement="outside"
+                placeholder="The text will appear here ..."
+                defaultValue=""
+                fullWidth={true}
+                disableAnimation
+                disableAutosize
+                classNames={{
+                    base: "",
+                    input: "resize-y min-h-[250px] text-md",
+                }}
+            />
+
 
             <div className='flex w-full justify-between mt-5'>
-                <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-14 w-5/12'>Copy text</Button>
+                <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-14 w-5/12' onPress={copyToClipboard}>Copy text</Button>
                 <Button variant="bordered" radius="full" color='primary' size='lg' className='font-semibold h-14 w-5/12' startContent={
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" clipRule="evenodd" d="M10.2498 3.03253L7.24521 4.06747C3.35763 5.40656 1.41384 6.0761 0.969596 7.23326C0.794632 7.68901 0.753836 8.17908 0.852099 8.64475C1.1016 9.8271 2.93261 10.6378 6.59464 12.2593C6.63642 12.2778 6.67623 12.2954 6.71411 12.3123L9.81372 10.0847C10.1854 9.81755 10.3712 9.68399 10.4295 9.7417C10.4877 9.79941 10.3529 9.98354 10.0833 10.3518L7.90759 13.3236C7.96445 13.4394 8.0276 13.5794 8.10748 13.7564C9.66116 17.2009 10.438 18.9231 11.5286 19.2155C12.1038 19.3697 12.7254 19.3116 13.2804 19.052C14.3326 18.5596 14.9347 16.7087 16.1389 13.0069L17.1984 9.75006C18.6628 5.24822 19.395 2.99729 18.2072 1.849C17.0194 0.700706 14.7629 1.47798 10.2498 3.03253Z" fill="#8EA34E" />
@@ -197,7 +201,7 @@ const SubmissionForm = (props) => {
                 <div className='flex justify-center'>
                     <Button
                         onClick={(e) => generate(e)}
-                        // type='submit'
+                        type='submit'
                         radius="full"
                         size='lg'
                         className='bg-[#8EA34E] text-white font-semibold w-3/4 h-14 mt-5'
@@ -225,7 +229,7 @@ const SubmissionForm = (props) => {
                         Generate
                     </Button>
                 </div>
-                <div className='mt-12 flex w-full justify-between '>
+                {/* <div className='mt-12 flex w-full justify-between '>
                     <Button variant="ghost" color='primary' radius="full" size='lg' className='font-semibold h-14 w-5/12'>Copy text</Button>
                     <Button variant="bordered" radius="full" color='primary' size='lg' className='font-semibold h-14 w-5/12' startContent={
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -235,7 +239,7 @@ const SubmissionForm = (props) => {
                     }>
                         Send
                     </Button>
-                </div>
+                </div> */}
             </div>
         </form>
 

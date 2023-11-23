@@ -3,6 +3,8 @@ import { Button, Checkbox, Divider, Input, Radio, RadioGroup, Textarea } from "@
 import { BookmarkIcon, BulbIcon, EditIcon, ExternalLinkIcon, FacebookSocialIcon, Icon1, Icon2, Icon3, Icon4, Icon5, InstagramSocialIcon, LinkIcon, LinkSocialIcon, LinkedInSocialIcon, Logo, MailSocialIcon, WhatsappSocialIcon, XSocialIcon } from './icons';
 import { useRef } from "react";
 import SubmissionForm from "./components/SubmissionForm";
+import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
+import CopyLinkButtonModel from './components/CopyLinkButtonModal'
 
 
 export default function Home() {
@@ -174,13 +176,46 @@ export default function Home() {
           <span className='text-[#535E32]'>Share this site</span>
         </h1>
         <div className='mt-10 flex justify-between items-center w-full'>
-          <a href="#"><MailSocialIcon /></a>
-          <a href="#"><LinkSocialIcon /></a>
-          <a href="#"><FacebookSocialIcon /></a>
-          <a href="#"><InstagramSocialIcon /></a>
-          <a href="#"><WhatsappSocialIcon /></a>
-          <a href="#"><XSocialIcon /></a>
-          <a href="#"><LinkedInSocialIcon /></a>
+          <EmailShareButton
+            url='https://michaelb1019.sg-host.com/'
+            quote={'Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.'}>
+            <MailSocialIcon />
+          </EmailShareButton>
+
+
+          <CopyLinkButtonModel />
+
+
+          <FacebookShareButton
+            url='https://michaelb1019.sg-host.com/'
+            quote={'Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.'}
+          >
+            <FacebookSocialIcon />
+          </FacebookShareButton>
+
+          {/* <InstagramSocialIcon /> */}
+
+          <WhatsappShareButton
+            url='https://michaelb1019.sg-host.com/'
+            quote={'Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.'}
+          >
+            <WhatsappSocialIcon />
+          </WhatsappShareButton>
+
+          <TwitterShareButton
+            url='https://michaelb1019.sg-host.com/'
+            quote={'Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.'}
+          >
+
+            <XSocialIcon />
+          </TwitterShareButton>
+
+          <LinkedinShareButton
+            url='https://michaelb1019.sg-host.com/'
+            quote={'Use this site to craft a submission to the Australian Government in regard to the draft flight paths proposed for the Western Sydney International Airport.'}
+          >
+            <LinkedInSocialIcon />
+          </LinkedinShareButton>
         </div>
       </section>
     </div >
