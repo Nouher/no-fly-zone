@@ -60,6 +60,9 @@ const SubmissionForm = (props) => {
 
     const [pending, setPending] = useState(false);
 
+    const [anonymous, setAnonymous] = useState(true);
+
+
     function handleInput(key, value) {
         setSubmissionForm({
             ...submissionForm,
@@ -196,25 +199,29 @@ const SubmissionForm = (props) => {
                 <p className=' text-sm lg:text-medium mt-7'>This site does not store any of your data. It uses the information below to populate an email you send from your email account. </p>
                 <div className='mt-7 flex flex-col gap-1'>
                     <h3 className='text-sm lg:text-medium'>Remain anonymous</h3>
-                    <RadioGroup>
-                        <Radio value="yes">Yes</Radio>
-                        <Radio value="no">No</Radio>
+                    <RadioGroup
+                        value={anonymous}
+                        onValueChange={setAnonymous}
+                    >
+                        <Radio value={true} >Yes</Radio>
+                        <Radio value={false} >No</Radio>
                     </RadioGroup>
+                    {anonymous}
                 </div>
                 <div className='mt-6 flex flex-col gap-4'>
-                    <Input type='text' label='Name' placeholder='Input Name' labelPlacement="outside" name='name'
+                    <Input isDisabled={anonymous} type='text' label='Name' placeholder='Input Name' labelPlacement="outside" name='name'
                         value={name}
                         onInput={(e) => setName(e.target.value)} />
 
-                    <Input type='email' label='Email' placeholder='Input Email' labelPlacement="outside" name='email'
+                    <Input isDisabled={anonymous} type='email' label='Email' placeholder='Input Email' labelPlacement="outside" name='email'
                         value={email}
                         onInput={(e) => setEmail(e.target.value)} />
 
-                    <Input type='phone' label='Phone' placeholder='Input Phone' labelPlacement="outside" name='phone'
+                    <Input isDisabled={anonymous} type='phone' label='Phone' placeholder='Input Phone' labelPlacement="outside" name='phone'
                         value={phone}
                         onInput={(e) => setPhone(e.target.value)} />
 
-                    <Input type='text' label='Organisation' placeholder='Input Organisation' labelPlacement="outside" name='organisation'
+                    <Input isDisabled={anonymous} type='text' label='Organisation' placeholder='Input Organisation' labelPlacement="outside" name='organisation'
                         value={organisation}
                         onInput={(e) => SetOrganisation(e.target.value)} />
                 </div>
@@ -262,7 +269,7 @@ const SubmissionForm = (props) => {
                     </Button>
                 </div> */}
             </div>
-        </form>
+        </form >
 
     )
 }
