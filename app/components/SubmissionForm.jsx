@@ -42,7 +42,7 @@ const SubmissionForm = (props) => {
         e.preventDefault();
         setPending(true)
         scrollToTopSection();
-        fetch('/api/generate', {
+        fetch('https://no-fly-zone-2fa9240d3427.herokuapp.com/user', {
             method: 'POST',
             body: JSON.stringify({
                 ...submissionForm,
