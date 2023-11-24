@@ -12,7 +12,6 @@ export async function POST(request) {
       role: "system",
       content:
         "You are a virtual assistant for content creation. you need to create a submission article body.",
-      // "You are a virtual assistant for content creation. you need to create a submission article body.",
     },
     {
       role: "user",
@@ -42,6 +41,7 @@ export async function POST(request) {
       -Email: ${body.email}
       -Phone: ${body.phone}
       -Organisation: ${body.organisation}
+      ${body.prompt}
       `,
     },
   ];
